@@ -1,26 +1,56 @@
-<h1>Generador de Tabla</h1>
+<div class="titulo">
+  <h1> Polinomio de Interpolación con Diferencias Divididas de Newton</h1>
+</div>
+<div class="contenedor">
+  <div class="datos">
+    <mat-grid-list cols="5">
+      <mat-grid-tile>
+          <mat-label class="resultado">Resultado: {{resultadoInterpolado}}</mat-label>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <mat-label >Valor a Interpolar</mat-label>
+          <input type="number" matInput placeholder="Valor de X" [(ngModel)]="valor_int">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile><mat-form-field class="example-full-width">
+          <mat-label>Valor de X</mat-label>
+          <input type="number" matInput placeholder="Valor de X" [(ngModel)]="valorX">
+        </mat-form-field></mat-grid-tile>
+      <mat-grid-tile> <mat-form-field class="example-full-width">
+          <mat-label>Valor de Y</mat-label>
+          <input type="number" matInput placeholder="Valor de Y" [(ngModel)]="valorY">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile> <button mat-raised-button color="primary" (click)="agregarPar()">Agregar
+          Par</button></mat-grid-tile>
+    </mat-grid-list>
 
-<div *ngIf="cantidad">
-  <label for="valorX">Valor de X:</label>
-  <input type="number" id="valorX" [(ngModel)]="valorX">
-  
-  <label for="valorY">Valor de Y:</label>
-  <input type="number" id="valorY" [(ngModel)]="valorY">
-  
-  <button (click)="agregarPar()">Agregar Par</button>
+  </div>
+</div>
+<div class="titulo2">
+  <button mat-raised-button color="primary" (click)="calcularResultadoInterpolado()">Agregar
+    Par</button>
 </div>
 
-<table id="tabla">
-  <thead>
-    <tr>
-      <th>X</th>
-      <th>Y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let par of paresXY">
-      <td>{{ par.x }}</td>
-      <td>{{ par.y }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="tabla">
+  <div class="contenido">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8 mat-table-centered mat-table-max-width">
+      <!-- Columna X -->
+      <ng-container matColumnDef="x">
+        <th mat-header-cell *matHeaderCellDef> X </th>
+        <td mat-cell *matCellDef="let par"> {{ par.x }} </td>
+      </ng-container>
+
+      <!-- Columna Y -->
+      <ng-container matColumnDef="y">
+        <th mat-header-cell *matHeaderCellDef> Y </th>
+        <td mat-cell *matCellDef="let par"> {{ par.y }} </td>
+      </ng-container>
+
+      <!-- Define las columnas que se mostrarán -->
+      <tr mat-header-row *matHeaderRowDef="['x', 'y']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['x', 'y'];"></tr>
+    </mat-table>
+  </div>
+</div>

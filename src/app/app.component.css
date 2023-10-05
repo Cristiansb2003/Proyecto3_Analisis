@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+  }
+.tabla{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}  
+
+.resultado{
+    font-size: 15px;
+    font-weight: bold;
+}
+.titulo{
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
